@@ -12,11 +12,13 @@ $(document).ready(function(){
 
     var newTask = new Task(inputtedTask, inputtedDescription);
 
-    $("ul#task").append("<li><span class='task'>" +  newTask.taskName + "</span></li>");
+    $("ul#task").append("<li><span class='task'>" +  newTask.taskName + "</span></li>" );
     $("input#new-task").val("");
     $("input#taskDescription").val("");
     $(".task").last().click(function() {
-      $("#show-task").show();
+      $(this).remove();
+      $("ul#done").append("<li><span class='task'>" +  newTask.taskName + "</span></li>");
+      $("#show-task").toggle();
       $(".task-name").text(newTask.taskName);
       $(".task-description").text(newTask.descriptionName);
     });
